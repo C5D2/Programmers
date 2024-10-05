@@ -1,6 +1,6 @@
 function solution(sizes) {
     let max = [];
-    let min = []
+    let min = [];
     for (let size of sizes) {
         let [w, h] = size;
         max.push(Math.max(w, h));
