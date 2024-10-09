@@ -1,8 +1,8 @@
 function solution(numbers) {
     let plusArr = [];
     for(let i = 0; i < numbers.length - 1; i++){
-        for(let k = i + 1; k < numbers.length; k++){
-    plus = numbers[i] + numbers[k];
+        for(let j = i + 1; j < numbers.length; j++){
+    plus = numbers[i] + numbers[j];
     plusArr.push(plus);
         }
     }
