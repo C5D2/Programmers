@@ -18,15 +18,34 @@
 //     return answer.length;
 // }
 
-function solution(babbling) {
-    const voca = ["aya", "ye", "woo", "ma"];
+// function solution(babbling) {
+//     const voca = ["aya", "ye", "woo", "ma"];
     
-    return babbling.filter(word => {
-        let temp = word;
-        for (let v of voca) {
-            if (temp.includes(v.repeat(2))) return false; 
-            temp = temp.split(v).join(' ');
+//     return babbling.filter(word => {
+//         let temp = word;
+//         for (let v of voca) {
+//             if (temp.includes(v.repeat(2))) return false; 
+//             temp = temp.split(v).join(' ');
+//         }
+//         return temp.trim().length === 0;
+//     }).length;
+// }
+function solution(babbling) {
+    const wordSet = new Set(["aya", "ye", "woo", "ma"])
+    let result = 0;
+
+    for(const word of babbling) {
+        let remainWord = '';
+        let prevWord = '';
+        for(const char of word) {
+            remainWord += char;
+            if(wordSet.has(remainWord)) {
+                if(remainWord === prevWord) break;
+                prevWord = remainWord
+                remainWord = ''
+            }
         }
-        return temp.trim().length === 0;
-    }).length;
+        if(remainWord === '') result++
+    }
+    return result;
 }
