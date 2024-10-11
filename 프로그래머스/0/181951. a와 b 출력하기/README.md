@@ -1,10 +1,10 @@
 # [level 0] a와 b 출력하기 - 181951 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181951) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181951?language=javascript) 
 
 ### 성능 요약
 
-메모리: 32.3 MB, 시간: 70.57 ms
+메모리: 32.2 MB, 시간: 93.73 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 10월 11일 17:08:40
+2024년 10월 11일 17:11:34
 
 ### 문제 설명
 
