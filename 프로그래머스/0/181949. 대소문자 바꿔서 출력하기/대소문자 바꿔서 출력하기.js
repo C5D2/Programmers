@@ -10,15 +10,6 @@ rl.on('line', function (line) {
     input = [line];
 }).on('close',function(){
     str = input[0];
-    let swap = "";
-    for (let i = 0; i < str.length; i++) {
-        const v = str[i]
-        if (v === v.toUpperCase()){
-            swap += v.toLowerCase();
-        }
-        else {
-            swap += v.toUpperCase();
-        }
-    }
-    console.log(swap);
+ const swap = str.split('').map((v) => v === v.toUpperCase() ? v.toLowerCase() : v.toUpperCase()).join('');   
+        console.log(swap);
 });
