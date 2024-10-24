@@ -13,5 +13,5 @@ function solution(answers) {
     
     const result = scores.map((score, index) => score === maxScore ? index + 1 : null).filter((num) => num !== null);
     
-    return result.sort((a, b) => a - b);
+    return result;
 }
