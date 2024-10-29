@@ -15,10 +15,20 @@
 //   }
 
 class Heap {
-    constructor(list) {
+    constructor(comparator = 'MIN', list) {
         this.heap = [];
-        this.comparator = (a, b) => a < b;
         
+        switch (comparator) {
+            case 'MAX':
+                this.comparator = (a, b) => a > b;
+                break;
+            case 'MIN':
+                this.comparator = (a, b) => a < b;
+                break;
+            default:
+                this.comparator = comparator;
+        }
+
         if (list?.length) {
             for (const item of list) {
                 this.push(item);
@@ -71,26 +81,28 @@ class Heap {
 
     heapifyDown() {
         for (
-            let i = 0, minChild = this.minChildIndex(i);
-            i !== minChild;
-            i = minChild, minChild = this.minChildIndex(i)
+            let i = 0, compareChild = this.compareChildIndex(i);
+            i !== compareChild;
+            i = compareChild, compareChild = this.compareChildIndex(i)
         ) {
-            this.swap(i, minChild);
+            this.swap(i, compareChild);
         }
     }
 
-    minChildIndex(current) {
+    compareChildIndex(current) {
         const leftChild = 2 * current + 1;
         const rightChild = 2 * current + 2;
-        let min = current;
+        let compare = current;
 
-        if (leftChild < this.size() && this.comparator(this.heap[leftChild], this.heap[min])) {
-            min = leftChild;
+        if (leftChild < this.size() && 
+            this.comparator(this.heap[leftChild], this.heap[compare])) {
+            compare = leftChild;
         }
-        if (rightChild < this.size() && this.comparator(this.heap[rightChild], this.heap[min])) {
-            min = rightChild;
+        if (rightChild < this.size() && 
+            this.comparator(this.heap[rightChild], this.heap[compare])) {
+            compare = rightChild;
         }
-        return min;
+        return compare;
     }
 }
 
@@ -99,7 +111,7 @@ function solution(scoville, K) {
     if (scoville.length === 1) return scoville[0] >= K ? 0 : -1;
     if (scoville.every(s => s >= K)) return 0;
     
-    const heap = new Heap(scoville);
+    const heap = new Heap('MIN', scoville);
     let count = 0;
     
     while (heap.size() >= 2 && heap.peek() < K) {
