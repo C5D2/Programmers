@@ -13,7 +13,7 @@ function solution(N, stages) {
     for(let l = 0; l < N; l++) {
             failRatio.push({
                 stage: l + 1,
-                ratio: clearUsers === 0 ? 0 : pauseUsers[l] / clearUsers[l]
+                ratio: clearUsers[l] === 0 ? 0 : pauseUsers[l] / clearUsers[l]
             })
     }
     const result = failRatio.sort((a, b) => b.ratio - a.ratio);
